@@ -625,9 +625,9 @@ function arlo_tm_kenburn_slider(){
 			timer:false,	
 			animation: [ 'kenburnsUp',  'kenburnsLeft', 'kenburnsRight'],
 			delay:7000,
+				loop:false,
 			// src: 'ImgAssets/BK_1.jpg'
 			slides: [
-				{ src: 'ImgAssets/BK_2.jpg' },
 				{ src: 'ImgAssets/BK_2.jpg' }
 			]
 
