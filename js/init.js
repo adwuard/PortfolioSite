@@ -545,30 +545,26 @@ function arlo_tm_totop_myhide(){
 // -------------------------------------------------
 
 function arlo_tm_animate_text(){
-	
-	"use strict";
-	
-	var animateSpan			= jQuery('.arlo_tm_animation_text_word');
-	
-		animateSpan.typed({
-			strings: ['Software Developer', 'App Developer', 'Enthusiast and a Traveler'],
-			loop: true,
-			startDelay: 1e3,
-			backDelay: 2e3
-		});
-}
-
-
-function arlo_tm_animate_text(){
 
 	"use strict";
 
-	var animateSpan			= jQuery('.arlo_tm_animate_text_Chinese');
+	var animateSpanCN			= jQuery('.arlo_tm_animate_text_Chinese');
 
-	animateSpan.typed({
+	animateSpanCN.typed({
 		strings: ['軟件工程師', '應用軟件開發','愛好者和旅行者'],
 		loop: true,
 		speed:2000,
+		startDelay: 1e3,
+		backDelay: 2e3
+	});
+
+
+
+	var animateSpanENG			= jQuery('.arlo_tm_animation_text_word');
+
+	animateSpanENG.typed({
+		strings: ['Software Developer', 'App Developer', 'Enthusiast and a Traveler'],
+		loop: true,
 		startDelay: 1e3,
 		backDelay: 2e3
 	});
