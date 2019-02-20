@@ -1,5 +1,10 @@
+var json = $.getJSON("repos.json");
+
+
 jQuery.githubUser = function (username, callback) {
-    jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
+    // jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
+    // jQuery.getJSON("/repos.json", callback);
+
 };
 
 //https://api.github.com/users/adwuard/repos
@@ -7,29 +12,39 @@ jQuery.githubUser = function (username, callback) {
 jQuery.fn.loadRepositories = function (username) {
     this.html("<span>Querying GitHub for " + username + "'s repositories...</span>");
     console.log("In func");
-    var target = this;
-    $.githubUser(username, function (data) {
+
+    // $.githubUser(username, function (data) {
+        data = json.responseJSON;
         console.log(data);
 
         var gitPanel = document.getElementById("projectPanel");
 
-        for (var i = 0; i <= data.data.length; i++) {
+        for (var i = 0; i <= data.length; i++) {
 
-            var repoName = data.data[i].name;
-            var description = data.data[i].description;
-            var pushedAt = data.data[i].pushed_at.split("T");
-            var watchers = data.data[i].watchers_count;
-            var forks = data.data[i].forks_count;
-            var defaultBranch = data.data[i].default_branch;
-            var url =data.data[i].html_url;
+            // var repoName = data.data[i].name;
+            // var description = data.data[i].description;
+            // var pushedAt = data.data[i].pushed_at.split("T");
+            // var watchers = data.data[i].watchers_count;
+            // var forks = data.data[i].forks_count;
+            // var defaultBranch = data.data[i].default_branch;
+            // var url =data.data[i].html_url;
 
 
-            console.log(repoName);
-            console.log(description);
-            console.log(pushedAt);
-            console.log(watchers);
-            console.log(forks);
-            console.log("====================");
+            var repoName = data[i].name;
+            var description = data[i].description;
+            var pushedAt = data[i].pushed_at.split("T");
+            var watchers = data[i].watchers_count;
+            var forks = data[i].forks_count;
+            var defaultBranch = data[i].default_branch;
+            var url =data[i].html_url;
+
+            //
+            // console.log(repoName);
+            // console.log(description);
+            // console.log(pushedAt);
+            // console.log(watchers);
+            // console.log(forks);
+            // console.log("====================");
 
 
             // <div class="card bg-light col-sm mb-4 ml-4 " style="max-width: 18rem;">
@@ -57,18 +72,19 @@ jQuery.fn.loadRepositories = function (username) {
             if (description === null){
                 description="No Description";
             }
-            repoDescription.innerHTML = description;
+
+            repoDescription.innerHTML = "<small>"+description+"</small>";
 
 
 
             var committime = document.createElement("label");
-            committime.setAttribute('class','badge');
-            committime.textContent = "       updated:" + pushedAt[0];
+            committime.setAttribute('class','badge mt-4');
+            committime.innerHTML = " <div class='container' style='bottom:2px; position: absolute;'> <i class=\"material-icons\"  style=\"font-size:16px;\">update</i> <span><small><strong>"+ defaultBranch+"</strong> branch: " + pushedAt[0] +"</small></span></div>";
 
 
             var watchersCount = document.createElement("label");
             committime.setAttribute('class','right');
-            watchersCount.textContent = watchers;
+            watchersCount.innerHTML= "<a class=\"btn disabled rightpart\">Button</a>";
 
             var forkCount = document.createElement("p");
             forkCount.innerText = forks;
@@ -77,9 +93,10 @@ jQuery.fn.loadRepositories = function (username) {
             gitPanel.appendChild(gitRepo);
             gitRepo.appendChild(header);
             // header.appendChild(watchersCount);
+            // header.appendChild(watchersCount);
             gitRepo.appendChild(repoDescription);
-            repoDescription.appendChild(committime);
-            // repoDescription.appendChild(watchersCount);
+            gitRepo.appendChild(committime);
+
 
 
         }
@@ -95,7 +112,7 @@ jQuery.fn.loadRepositories = function (username) {
         //     list.append('<dt><a href="'+ this.url +'">' + this.name + '</a></dt>');
         //     list.append('<dd>' + this.description + '</dd>');
         // });
-    });
+    // });
 
     function sortByNumberOfWatchers(repos) {
         repos.sort(function (a, b) {

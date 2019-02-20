@@ -10,7 +10,21 @@ jQuery(document).ready(function(){
 	"use strict";
 	
 	// here all ready functions
-	
+
+
+	$("#thover").click(function(){
+		$(this).fadeOut();
+		$("#tpopup").fadeOut();
+	});
+
+
+	$("#tclose").click(function(){
+		$("#thover").fadeOut();
+		$("#tpopup").fadeOut();
+	});
+
+
+
 	arlo_tm_hamburger();
 	arlo_tm_responsive();
 	arlo_tm_imgtosvg();
@@ -537,11 +551,27 @@ function arlo_tm_animate_text(){
 	var animateSpan			= jQuery('.arlo_tm_animation_text_word');
 	
 		animateSpan.typed({
-			strings: ['UI/UX Designer', 'Software Developer', 'Computer Scientist'],
+			strings: ['Software Developer', 'App Developer', 'Enthusiast and a Traveler'],
 			loop: true,
 			startDelay: 1e3,
 			backDelay: 2e3
 		});
+}
+
+
+function arlo_tm_animate_text(){
+
+	"use strict";
+
+	var animateSpan			= jQuery('.arlo_tm_animate_text_Chinese');
+
+	animateSpan.typed({
+		strings: ['軟件工程師', '應用軟件開發','愛好者和旅行者'],
+		loop: true,
+		speed:2000,
+		startDelay: 1e3,
+		backDelay: 2e3
+	});
 }
 
 // -----------------------------------------------------
@@ -624,11 +654,16 @@ function arlo_tm_kenburn_slider(){
 			jQuery('.arlo_tm_hero_header_wrap .overlay_slider').vegas({
 			timer:false,	
 			animation: [ 'kenburnsUp',  'kenburnsLeft', 'kenburnsRight'],
+			loop:false,
 			delay:7000,
-				loop:false,
 			// src: 'ImgAssets/BK_1.jpg'
 			slides: [
-				{ src: 'ImgAssets/BK_1.jpg' }
+				// { src: "ImgAssets/BK_7.jpg" },
+				{ src: "ImgAssets/BK_8.jpg" }
+				// { src: "ImgAssets/BK_9.jpg" },
+				// { src: "ImgAssets/BK_1.jpg" },
+				// { src: "ImgAssets/BK_2.jpg" },
+				// { src: "ImgAssets/BK_6.jpg" },
 			]
 
 		});
@@ -754,3 +789,6 @@ function arlo_tm_data_images(){
 		  } });
 		}
 	}
+
+
+
