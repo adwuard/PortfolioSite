@@ -28,6 +28,7 @@ jQuery.fn.loadRepositories = function (username) {
             var forks = data.data[i].forks_count;
             var defaultBranch = data.data[i].default_branch;
             var url =data.data[i].html_url;
+            var lang = data.data[i].language;
 
 
             // var repoName = data[i].name;
@@ -57,7 +58,7 @@ jQuery.fn.loadRepositories = function (username) {
 
             var gitRepo = document.createElement("div");
             gitRepo.setAttribute('class', 'card bg-light mb-4 ml-4');
-            gitRepo.setAttribute("style", "width: 18rem; height: 15rem;");
+            gitRepo.setAttribute("style", "width: 18rem; height: 18rem;");
             // gitRepo.setAttribute('style', '');
 
 
@@ -72,8 +73,7 @@ jQuery.fn.loadRepositories = function (username) {
                 description="No Description";
             }
 
-            repoDescription.innerHTML = "<small>"+description+"</small>";
-
+            repoDescription.innerHTML ="<label style='color: royalblue; font-size: 12px'> [ "+ lang +" ]</label></br><small>"+description+"</small>";
 
 
             var committime = document.createElement("label");
