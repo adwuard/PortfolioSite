@@ -1,9 +1,9 @@
-var json = $.getJSON("repos.json");
+// var json = $.getJSON("repos.json");
 
 
 jQuery.githubUser = function (username, callback) {
-    // jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
-    // jQuery.getJSON("/repos.json", callback);
+    jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
+    jQuery.getJSON("/repos.json", callback);
 
 };
 
@@ -13,30 +13,30 @@ jQuery.fn.loadRepositories = function (username) {
     this.html("<span>Querying GitHub for " + username + "'s repositories...</span>");
     console.log("In func");
 
-    // $.githubUser(username, function (data) {
-        data = json.responseJSON;
+    $.githubUser(username, function (data) {
+        // data = json.responseJSON;
         console.log(data);
 
         var gitPanel = document.getElementById("projectPanel");
 
-        for (var i = 0; i <= data.length; i++) {
+        for (var i = 0; i <= data.data.length; i++) {
 
-            // var repoName = data.data[i].name;
-            // var description = data.data[i].description;
-            // var pushedAt = data.data[i].pushed_at.split("T");
-            // var watchers = data.data[i].watchers_count;
-            // var forks = data.data[i].forks_count;
-            // var defaultBranch = data.data[i].default_branch;
-            // var url =data.data[i].html_url;
+            var repoName = data.data[i].name;
+            var description = data.data[i].description;
+            var pushedAt = data.data[i].pushed_at.split("T");
+            var watchers = data.data[i].watchers_count;
+            var forks = data.data[i].forks_count;
+            var defaultBranch = data.data[i].default_branch;
+            var url =data.data[i].html_url;
 
 
-            var repoName = data[i].name;
-            var description = data[i].description;
-            var pushedAt = data[i].pushed_at.split("T");
-            var watchers = data[i].watchers_count;
-            var forks = data[i].forks_count;
-            var defaultBranch = data[i].default_branch;
-            var url =data[i].html_url;
+            // var repoName = data[i].name;
+            // var description = data[i].description;
+            // var pushedAt = data[i].pushed_at.split("T");
+            // var watchers = data[i].watchers_count;
+            // var forks = data[i].forks_count;
+            // var defaultBranch = data[i].default_branch;
+            // var url =data[i].html_url;
 
             //
             // console.log(repoName);
@@ -57,10 +57,9 @@ jQuery.fn.loadRepositories = function (username) {
 
             var gitRepo = document.createElement("div");
             gitRepo.setAttribute('class', 'card bg-light mb-4 ml-4');
-            gitRepo.setAttribute('style', 'max-width: 18rem;');
+            gitRepo.setAttribute("style", "width: 18rem; height: 15rem;");
+            // gitRepo.setAttribute('style', '');
 
-
-        //
 
             var header = document.createElement("div");
             header.setAttribute('class', 'card-header');
@@ -78,8 +77,8 @@ jQuery.fn.loadRepositories = function (username) {
 
 
             var committime = document.createElement("label");
-            committime.setAttribute('class','badge mt-4');
-            committime.innerHTML = " <div class='container' style='bottom:2px; position: absolute;'> <i class=\"material-icons\"  style=\"font-size:16px;\">update</i> <span><small><strong>"+ defaultBranch+"</strong> branch: " + pushedAt[0] +"</small></span></div>";
+            committime.setAttribute('class','mt-4');
+            committime.innerHTML = " <div class='container' style='bottom:2px;'> <i class=\"material-icons\"  style=\"font-size:16px; display: inline; \">update</i> <span><small><strong>"+ defaultBranch+"</strong> branch: " + pushedAt[0] +"</small></span></div>";
 
 
             var watchersCount = document.createElement("label");
@@ -112,7 +111,7 @@ jQuery.fn.loadRepositories = function (username) {
         //     list.append('<dt><a href="'+ this.url +'">' + this.name + '</a></dt>');
         //     list.append('<dd>' + this.description + '</dd>');
         // });
-    // });
+    });
 
     function sortByNumberOfWatchers(repos) {
         repos.sort(function (a, b) {

@@ -2378,3 +2378,7 @@ img.svg{
 	.arlo_tm_counter_wrap{padding: 94px 0px 48px 0px;}
 }
 
+.card{
+	min-height: 200px;
+	min-width: 500px;
+}
