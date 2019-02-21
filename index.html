@@ -184,7 +184,7 @@
 											<h4>Hi! I'm <strong style="color: #E3872D">Hsuan Han Lai</strong> People call me<strong style="color: #E3872D"> Edward</strong></h4>
 										</div>
 										<div class="definition">
-											<p>Ever since I was 10 years old, I am interested in programming and robotic design. And after Plunging into the inspiring education at Pennsylvania State University. It has provided me with a strong academic foundation for science and engineering, and insight into software development, computer programming and coding.
+											<p>Ever since I was 10 years old, I am interested in programming and robotic design. And after plunging into the inspiring education at Pennsylvania State University. It has provided me with a strong academic foundation for science and engineering, and insight into software development, computer programming and coding.
 												I'm very passionate and dedicated to my work. I have acquired the skills and knowledge necessary to project a success. I enjoy every step of the design process,
 												from discussion and collaboration to concept and execution.</p>
 										</div>
@@ -389,21 +389,21 @@
 												<li>
 													<div class="inner arlo_tm_minibox">
 														<h3 style="color: #00DFFC"><span><span class="arlo_tm_counter" data-from="0" data-to="12" data-speed="2000">0</span></span></h3>
-														<span style="color: white">Personal Projects</span>
+														<span style="color: white">Personal Projects<h1></br>📋 🤘🏻</h1></span>
 													</div>
 												</li>
 
 												<li>
 													<div class="inner arlo_tm_minibox">
 														<h3 style="color: #00DFFC"><span><span class="arlo_tm_counter" data-from="0" data-to="11" data-speed="2000">0</span></span></h3>
-														<span style="color: white">Awards</span>
+														<span style="color: white">Awards<h1></br>🎊</h1></span>
 													</div>
 												</li>
 
 												<li>
 													<div class="inner arlo_tm_minibox">
 														<h3 style="color: #00DFFC"><span><span class="arlo_tm_counter" data-from="0" data-to="4" data-speed="1500">0</span>+</span></h3>
-														<span  class="mb-4" style="color: white">Leadership Experiences</span>
+														<span  class="mb-4" style="color: white">Leadership Experiences<h1></br>🙋🏻‍♂️</h1></span>
 															<!--<h6 style="color: white">Engineering Club President</br></h6>-->
 															<!--<h6 style="color: white">Robot Club Founder</br></h6>-->
 															<!--<h6 style="color: white">Event Organizer</br></h6>-->
@@ -413,7 +413,7 @@
 												<li>
 													<div class="inner arlo_tm_minibox">
 														<h3 style="color: #00DFFC"><span><span class="arlo_tm_counter" data-from="0" data-to="2300" data-speed="1500">0</span>+</span></h3>
-														<span style="color: white">Cups of Coffees <h1>☕</h1></span>
+														<span style="color: white">Cups of Coffees <h1></br>☕</h1></span>
 													</div>
 												</li>
 
@@ -503,19 +503,42 @@
 						</div>
 					</div>
 				</div>
+
+				<div id="CounterVisitor">
+				</div>
+
 				<!-- /CONTACT & FOOTER -->
-				
 			</div>
 		</div>
 		<!-- /RIGHTPART -->
 		
-		<a class="arlo_tm_totop" href="#"></a> 
-		
+		<a class="arlo_tm_totop" href="#"></a>
+
 	</div>
 </div>
+
+
 <!-- / WRAPPER ALL -->
 
 
+
+<script>
+	var n = localStorage.getItem('on_load_counter');
+
+	if (n === null) {
+		n = 0;
+	}
+	n++;
+
+	localStorage.setItem("on_load_counter", n);
+
+	nums = n.toString().split('').map(Number);
+	document.getElementById('CounterVisitor').innerHTML = '';
+	for (var i of nums) {
+		document.getElementById('CounterVisitor').innerHTML = '<span class="counter-item"> Visitors: ' + i + '</span>';
+	}
+
+</script>
 
 
 <!-- SCRIPTS -->
