@@ -3,7 +3,7 @@
 
 jQuery.githubUser = function (username, callback) {
     jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
-    jQuery.getJSON("/repos.json", callback);
+    // jQuery.getJSON("/repos.json", callback);
 
 };
 
@@ -11,8 +11,6 @@ jQuery.githubUser = function (username, callback) {
 
 jQuery.fn.loadRepositories = function (username) {
     this.html("<span>Querying GitHub for " + username + "'s repositories...</span>");
-    console.log("In func");
-
     $.githubUser(username, function (data) {
         // data = json.responseJSON;
         console.log(data);
@@ -119,3 +117,20 @@ jQuery.fn.loadRepositories = function (username) {
         });
     }
 };
+
+function readCount(){
+
+    fh = fopen(getScriptPath(), 0); // Open the file for reading
+
+    if(fh!=-1) {
+
+        length = flength(fh); // Get the length of the file
+        str = fread(fh, length); // Read in the entire file
+        fclose(fh); // Close the file
+        // Display the contents of the file
+        write(str);
+
+    }
+
+}
+
