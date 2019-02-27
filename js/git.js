@@ -1,8 +1,7 @@
 // var json = $.getJSON("repos.json");
 
 jQuery.githubUser = function (username, callback) {
-    // jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
-    // jQuery.getJSON("/repos.json", callback);
+    jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
 };
 
 //https://api.github.com/users/adwuard/repos

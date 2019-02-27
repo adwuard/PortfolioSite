@@ -550,36 +550,24 @@
                                 <div class="rightbox">
                                     <div class="arlo_tm_contact_wrap">
                                         <div class="main_input_wrap">
-                                            <!--<form action="/" method="post" class="contact_form" id="contact_form">-->
-                                                <!--<div class="returnmessage"-->
-                                                     <!--data-success="Your message has been received, We will contact you soon."></div>-->
-                                                <!--<div class="empty_notice"><span>Please Fill Required Fields</span></div>-->
-                                                <!--<div class="wrap">-->
-                                                    <!--<input id="name" type="text" placeholder="Your Name">-->
-                                                <!--</div>-->
-                                                <!--<div class="wrap">-->
-                                                    <!--<input id="email" type="text" placeholder="Your Email">-->
-                                                <!--</div>-->
+                                            <h6 id="responseMessage"></h6>
+                                            <form id="contact_form">
+                                                <div class="empty_notice"><span>Please Fill Required Fields</span></div>
+                                                <div class="wrap">
+                                                    <input type="text" name="user_name" placeholder="Your Name">
+                                                </div>
+                                                <div class="wrap">
+                                                    <input type="email" name="user_email" placeholder="Your Email">
+                                                </div>
 
-                                                <!--<div class="wrap">-->
-                                                    <!--<textarea id="message" placeholder="Your Message"></textarea>-->
-                                                <!--</div>-->
-                                                <!--<div class="arlo_tm_button">-->
-                                                    <!--<a id="send_message" href="#"><span>Send Message</span></a>-->
-                                                <!--</div>-->
-                                            <!--</form>-->
-                                            <h6 id="responseMessage" style="color: #3F3F3F"></h6>
-                                            <form id="contact-form">
-                                                <input type="hidden" name="contact_number">
-                                                <label>Name</label>
-                                                <input type="text" name="user_name">
-                                                <label>Email</label>
-                                                <input type="email" name="user_email">
-                                                <label>Message</label>
-                                                <textarea name="contact"></textarea>
-                                                <input type="submit" value="Send">
+                                                <div class="wrap">
+                                                    <textarea name="contact" placeholder="Your Message"></textarea>
+                                                </div>
+                                                <div class="buttons_wrap">
+                                                    <input class="arlo_tm_button" style="background-color: #E3872D; font-size: large"
+                                                           type="submit" value="Send Message"/>
+                                                </div>
                                             </form>
-
 
                                         </div>
                                     </div>
@@ -634,22 +622,24 @@
 </script>
 <script type="text/javascript">
     window.onload = function() {
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
+        document.getElementById('contact_form').addEventListener('submit', function(event) {
             console.log("Send!!");
             event.preventDefault();
             this.contact_number.value = Math.random() * 100000 | 0;
             emailjs.sendForm('default_service', 'template_VltGU03T', this)
                 .then(function(response) {
+                    document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
                     document.getElementById("responseMessage").innerHTML="Success! Thank you for contacting, I will response within 24 hours.";
                     console.log('SUCCESS!', response.status, response.text);
                 }, function(error) {
+                    document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
                     document.getElementById("responseMessage").innerHTML="Email Fail";
                     console.log('FAILED...', error);
                 });
+
         });
     }
 </script>
-
 
 
 

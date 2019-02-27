@@ -440,23 +440,59 @@
                                 <div class="rightbox">
                                     <div class="arlo_tm_contact_wrap">
                                         <div class="main_input_wrap">
-                                            <form action="/" class="contact_form" id="contact_form" method="post">
-                                                <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+
+                                            <!--style="color: #E3872D"-->
+                                            <h6 id="responseMessage"></h6>
+                                            <form id="contact_form">
                                                 <div class="empty_notice"><span>Please Fill Required Fields</span></div>
                                                 <div class="wrap">
-                                                    <input id="name" placeholder="您的姓名" type="text">
+                                                    <input type="text" name="user_name" placeholder="您的姓名">
                                                 </div>
                                                 <div class="wrap">
-                                                    <input id="email" placeholder="郵箱" type="text">
+                                                    <input type="email" name="user_email" placeholder="郵箱">
                                                 </div>
 
                                                 <div class="wrap">
-                                                    <textarea id="message" placeholder="訊息"></textarea>
+                                                    <textarea name="contact" placeholder="訊息"></textarea>
                                                 </div>
-                                                <div class="arlo_tm_button">
-                                                    <a href="#" id="send_message"><span>發送信息</span></a>
+                                                <div class="buttons_wrap">
+                                                    <input class="arlo_tm_button" style="background-color: #E3872D; font-size: large"
+                                                           type="submit" value="發送信息"/>
                                                 </div>
                                             </form>
+
+
+                                            <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+                                            <script type="text/javascript">
+                                                (function(){
+                                                    emailjs.init("user_vpRSGgT9oVAIdVsVjDjIU");
+                                                })();
+                                            </script>
+                                            <script type="text/javascript">
+                                                window.onload = function() {
+                                                    document.getElementById('contact_form').addEventListener('submit', function(event) {
+                                                        console.log("Send!!");
+                                                        event.preventDefault();
+                                                        this.contact_number.value = Math.random() * 100000 | 0;
+                                                        emailjs.sendForm('default_service', 'template_VltGU03T', this)
+                                                            .then(function(response) {
+                                                                document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
+                                                                document.getElementById("responseMessage").innerHTML="已發送！ 謝謝與我聯繫，我將在24小時內給予您回覆。";
+                                                                // console.log('SUCCESS!', response.status, response.text);
+                                                            }, function(error) {
+                                                                document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
+                                                                document.getElementById("responseMessage").innerHTML="發送失敗！";
+                                                                // console.log('FAILED...', error);
+                                                            });
+
+                                                    });
+                                                }
+                                            </script>
+
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
