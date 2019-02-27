@@ -460,39 +460,6 @@
                                                            type="submit" value="發送信息"/>
                                                 </div>
                                             </form>
-
-
-                                            <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-                                            <script type="text/javascript">
-                                                (function(){
-                                                    emailjs.init("user_vpRSGgT9oVAIdVsVjDjIU");
-                                                })();
-                                            </script>
-                                            <script type="text/javascript">
-                                                window.onload = function() {
-                                                    document.getElementById('contact_form').addEventListener('submit', function(event) {
-                                                        console.log("Send!!");
-                                                        event.preventDefault();
-                                                        this.contact_number.value = Math.random() * 100000 | 0;
-                                                        emailjs.sendForm('default_service', 'template_VltGU03T', this)
-                                                            .then(function(response) {
-                                                                document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
-                                                                document.getElementById("responseMessage").innerHTML="已發送！ 謝謝與我聯繫，我將在24小時內給予您回覆。";
-                                                                // console.log('SUCCESS!', response.status, response.text);
-                                                            }, function(error) {
-                                                                document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
-                                                                document.getElementById("responseMessage").innerHTML="發送失敗！";
-                                                                // console.log('FAILED...', error);
-                                                            });
-
-                                                    });
-                                                }
-                                            </script>
-
-
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -516,6 +483,36 @@
     </div>
 </div>
 <!-- / WRAPPER ALL -->
+
+
+
+
+
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("user_vpRSGgT9oVAIdVsVjDjIU");
+    })();
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact_form').addEventListener('submit', function(event) {
+            console.log("Send!!");
+            event.preventDefault();
+            emailjs.sendForm('default_service', 'template_VltGU03T', this)
+                .then(function(response) {
+                    document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
+                    document.getElementById("responseMessage").innerHTML="已發送！ 謝謝與我聯繫，我將在24小時內給予您回覆。";
+                    // console.log('SUCCESS!', response.status, response.text);
+                }, function(error) {
+                    document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
+                    document.getElementById("responseMessage").innerHTML="發送失敗！";
+                    // console.log('FAILED...', error);
+                });
+
+        });
+    }
+</script>
 
 
 

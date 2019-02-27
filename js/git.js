@@ -97,36 +97,6 @@ jQuery.fn.loadRepositories = function (username) {
     });
 };
 
-// // sendEmail2();
-// sendEmail()
-// function sendEmail() {
-//     Email.send({
-//         // SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
-//         SecureToken : "5349508c-d97b-4f3f-be63-d26a0a3abdbe",
-//         To : 'hsuan.han.lai@gmail.com',
-//         From : "p857211@gmail.com",
-//         Subject : "This is the subject",
-//         Body : "And this is the body",
-//     }).then(
-//         message => alert(message)
-//     );
-// }
-//
-// function sendEmail2() {
-//     Email.send({
-//         Host : "smtp.elasticemail.com",
-//         Username : "hsuan.han.lai@gmail.com",
-//         Password : "63183ed8-e763-429b-8ef2-7b5d76ed70df",
-//         To : 'hsuan.han.lai@gmail.com',
-//         From : "hul233@psu.edu",
-//         Subject : "This is the subject",
-//         Body : "And this is the body"
-//     }).then(
-//         message => alert(message)
-//     );
-//
-// }
-
 function readCount(){
 
     fh = fopen(getScriptPath(), 0); // Open the file for reading

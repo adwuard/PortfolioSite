@@ -625,7 +625,7 @@
         document.getElementById('contact_form').addEventListener('submit', function(event) {
             console.log("Send!!");
             event.preventDefault();
-            this.contact_number.value = Math.random() * 100000 | 0;
+            // this.contact_number.value = Math.random() * 100000 | 0;
             emailjs.sendForm('default_service', 'template_VltGU03T', this)
                 .then(function(response) {
                     document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
