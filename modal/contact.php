@@ -1,7 +1,7 @@
 <?php
 
 // Put contacting email here
-$php_main_email = "hul233@psu.edu";
+$php_main_email = "contact@hsuanhanlai.com";
 
 //Fetching Values from URL
 $php_name = $_POST['ajax_name'];
@@ -34,6 +34,8 @@ if (filter_var($php_email, FILTER_VALIDATE_EMAIL)) {
 		. 'This is a Contact Confirmation mail.'
 		. '<br/>'
 		. 'We will contact you as soon as possible .</div>';
+
+
 		$php_sendmessage = "<div style=\"background-color:#f5f5f5; color:#333;\">" . $php_template . "</div>";
 
 		// message lines should not exceed 70 characters (PHP rule), so wrap it

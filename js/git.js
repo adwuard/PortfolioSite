@@ -1,10 +1,8 @@
 // var json = $.getJSON("repos.json");
 
-
 jQuery.githubUser = function (username, callback) {
-    jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
+    // jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
     // jQuery.getJSON("/repos.json", callback);
-
 };
 
 //https://api.github.com/users/adwuard/repos
@@ -97,26 +95,38 @@ jQuery.fn.loadRepositories = function (username) {
 
 
         }
-
-        // var repos = data.data[0].full_name;
-
-        // console.log(repos);
-        // sortByNumberOfWatchers(repos);
-        //
-        // var list = $('<dl/>');
-        // target.empty().append(list);
-        // $(repos).each(function() {
-        //     list.append('<dt><a href="'+ this.url +'">' + this.name + '</a></dt>');
-        //     list.append('<dd>' + this.description + '</dd>');
-        // });
     });
-
-    function sortByNumberOfWatchers(repos) {
-        repos.sort(function (a, b) {
-            return b.watchers - a.watchers;
-        });
-    }
 };
+
+// // sendEmail2();
+// sendEmail()
+// function sendEmail() {
+//     Email.send({
+//         // SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
+//         SecureToken : "5349508c-d97b-4f3f-be63-d26a0a3abdbe",
+//         To : 'hsuan.han.lai@gmail.com',
+//         From : "p857211@gmail.com",
+//         Subject : "This is the subject",
+//         Body : "And this is the body",
+//     }).then(
+//         message => alert(message)
+//     );
+// }
+//
+// function sendEmail2() {
+//     Email.send({
+//         Host : "smtp.elasticemail.com",
+//         Username : "hsuan.han.lai@gmail.com",
+//         Password : "63183ed8-e763-429b-8ef2-7b5d76ed70df",
+//         To : 'hsuan.han.lai@gmail.com',
+//         From : "hul233@psu.edu",
+//         Subject : "This is the subject",
+//         Body : "And this is the body"
+//     }).then(
+//         message => alert(message)
+//     );
+//
+// }
 
 function readCount(){
 
