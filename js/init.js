@@ -339,7 +339,7 @@ function arlo_tm_anchor(){
 // -----------------------------------------------------
 
 function arlo_tm_contact_form(){
-	
+
 	"use strict";
 	
 	jQuery(".contact_form #send_message").on('click', function(){
@@ -357,7 +357,7 @@ function arlo_tm_contact_form(){
 		}
 		else{
 			// Returns successful data submission message when the entered information is stored in database.
-			jQuery.post("contact.php",{ ajax_name: name, ajax_email: email, ajax_message:message}, function(data) {
+			jQuery.post("js/contact.php",{ ajax_name: name, ajax_email: email, ajax_message:message}, function(data) {
 				
 				jQuery(".contact_form .returnmessage").append(data);//Append returned message to message paragraph
 				
