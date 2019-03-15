@@ -68,7 +68,7 @@
                     <li><a href="#home">主頁</a></li>
                     <li><a href="#about">關於我</a></li>
                     <li><a href="#experiences">經歷</a></li>
-                    <li><a href="#Projects_tab">專題</a></li>
+                    <li><a href="#Projects_tab">開源項目</a></li>
                     <li><a href="#contact">聯絡我</a></li>
 
                     <div><hr color="white"></div>
@@ -96,7 +96,7 @@
                         <li><a href="#home">主頁</a></li>
                         <li><a href="#about">關於我</a></li>
                         <li><a href="#experiences">經歷</a></li>
-                        <li><a href="#Projects_tab">專題</a></li>
+                        <li><a href="#Projects_tab">開源項目</a></li>
                         <li><a href="#contact">聯絡我</a></li>
                     </ul>
                 </div>
@@ -446,14 +446,14 @@
                                             <form id="contact_form">
                                                 <div class="empty_notice"><span>Please Fill Required Fields</span></div>
                                                 <div class="wrap">
-                                                    <input type="text" name="user_name" placeholder="您的姓名">
+                                                    <input id="name_Box" type="text" name="user_name" placeholder="您的姓名">
                                                 </div>
                                                 <div class="wrap">
-                                                    <input type="email" name="user_email" placeholder="郵箱">
+                                                    <input id="email_Box" type="email" name="user_email" placeholder="郵箱">
                                                 </div>
 
                                                 <div class="wrap">
-                                                    <textarea name="contact" placeholder="訊息"></textarea>
+                                                    <textarea id="message_Box" name="contact" placeholder="訊息"></textarea>
                                                 </div>
                                                 <div class="buttons_wrap">
                                                     <input class="arlo_tm_button" style="background-color: #E3872D; font-size: large"
@@ -497,17 +497,17 @@
 <script type="text/javascript">
     window.onload = function() {
         document.getElementById('contact_form').addEventListener('submit', function(event) {
-            console.log("Send!!");
             event.preventDefault();
             emailjs.sendForm('default_service', 'template_VltGU03T', this)
                 .then(function(response) {
-                    document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
+                    document.getElementById("responseMessage").style.color = "#ff9900";
                     document.getElementById("responseMessage").innerHTML="已發送！ 謝謝與我聯繫，我將在24小時內給予您回覆。";
-                    // console.log('SUCCESS!', response.status, response.text);
+                    document.getElementById("email_Box").value= "";
+                    document.getElementById("name_Box").value = "";
+                    document.getElementById("message_Box").value = "";
                 }, function(error) {
-                    document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
+                    document.getElementById("responseMessage").style.color = "red";
                     document.getElementById("responseMessage").innerHTML="發送失敗！";
-                    // console.log('FAILED...', error);
                 });
 
         });

@@ -554,14 +554,14 @@
                                             <form id="contact_form">
                                                 <div class="empty_notice"><span>Please Fill Required Fields</span></div>
                                                 <div class="wrap">
-                                                    <input type="text" name="user_name" placeholder="Your Name">
+                                                    <input id="name_Box" type="text" name="user_name" placeholder="Your Name">
                                                 </div>
                                                 <div class="wrap">
-                                                    <input type="email" name="user_email" placeholder="Your Email">
+                                                    <input id="email_Box" name="user_email" placeholder="Your Email">
                                                 </div>
 
                                                 <div class="wrap">
-                                                    <textarea name="contact" placeholder="Your Message"></textarea>
+                                                    <textarea id="message_Box" name="contact" placeholder="Your Message"></textarea>
                                                 </div>
                                                 <div class="buttons_wrap">
                                                     <input class="arlo_tm_button" style="background-color: #E3872D; font-size: large"
@@ -623,16 +623,18 @@
 <script type="text/javascript">
     window.onload = function() {
         document.getElementById('contact_form').addEventListener('submit', function(event) {
-            console.log("Send!!");
             event.preventDefault();
-            // this.contact_number.value = Math.random() * 100000 | 0;
             emailjs.sendForm('default_service', 'template_VltGU03T', this)
                 .then(function(response) {
-                    document.getElementById("responseMessage").setAttribute("style","color:\"orange\"");
+                    document.getElementById("responseMessage").style.color = "#ff9900";
                     document.getElementById("responseMessage").innerHTML="Success! Thank you for contacting, I will response within 24 hours.";
+
+                    document.getElementById("email_Box").value = "";
+                    document.getElementById("name_Box").value = "";
+                    document.getElementById("message_Box").value = "";
                     console.log('SUCCESS!', response.status, response.text);
                 }, function(error) {
-                    document.getElementById("responseMessage").setAttribute("style","color:\"red\"");
+                    document.getElementById("responseMessage").style.color = "red";
                     document.getElementById("responseMessage").innerHTML="Email Fail";
                     console.log('FAILED...', error);
                 });
